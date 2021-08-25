@@ -1,7 +1,6 @@
 package dao;
 
-import entity.Appointment_status;
-import entity.Hospital;
+import entity.Visitor;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,12 +10,12 @@ import java.util.ArrayList;
 import java.util.*;
 import java.util.Scanner;
 
-public class Appointment_statusDAO {
+public class VisitorDAO {
     String myUrl = "jdbc:mysql://localhost:3306/HospitalMS?useSSL=false";
     String user = "root";
     String pass = "8883543506";
 
-    public void save(Appointment_status appointment_status) {
+    public void save(Visitor visitor) {
 
 
         try {
@@ -26,8 +25,8 @@ public class Appointment_statusDAO {
             Statement st = conn.createStatement();
 
             // note that i'm leaving "date_created" out of this insert statement
-            st.executeUpdate("INSERT INTO appointment ( patient_id, date_of_visit, purpose_of_visit, BP, temperature, doctor_visit, is_firstvisit) "
-                    + "VALUES ('" + appointment_status.getPid() + "','" + appointment_status.getDate_of_visit() + "','" + appointment_status.getPurpose_of_visit() + "','" + appointment_status.getBp() + "','" +appointment_status.getTemperature() + "','" + appointment_status.getDoctor_visit() + "','" + appointment_status.getIs_firstvisit() + "' )");
+            st.executeUpdate("INSERT INTO visitor ( visitor_id, patient_id, doctor_id, doctor_reccomend, medicine) "
+                    + "VALUES ('" + visitor.getVid() + "','" + visitor.getPid() + "','" + visitor.getDid() + "','" + visitor.getDoctor_reccommend() + "','" +visitor.getMedicine() + "')");
 
           /*  if(appointment_status.getIs_firstvisit() >3) {
 
@@ -44,17 +43,17 @@ public class Appointment_statusDAO {
         }
 
     }
-    public List<Appointment_status> find() {
+    public List<Visitor> find() {
 
 
 
-        List<Appointment_status> a = new ArrayList<Appointment_status>();
+        List<Visitor> v = new ArrayList<Visitor>();
 
         try {
 
             Connection conn = DriverManager.getConnection(myUrl, user, pass);
 
-            String query = "SELECT * FROM appointment";
+            String query = "SELECT * FROM visitor";
 
             Statement st = conn.createStatement();
 
@@ -68,15 +67,13 @@ public class Appointment_statusDAO {
 //
             while (resultSet.next()) {
 
-                Appointment_status appointment_status=new Appointment_status();
-                appointment_status.setPid(resultSet.getLong(1));
-                appointment_status.setDate_of_visit(resultSet.getString(2));
-                appointment_status.setPurpose_of_visit(resultSet.getString(3));
-                appointment_status.setBp(resultSet.getString(4));
-                appointment_status.setTemperature(resultSet.getString(5));
-                appointment_status.setDoctor_visit(resultSet.getString(6));
-                appointment_status.setIs_firstvisit(resultSet.getInt(7));
-                a.add(appointment_status);
+                Visitor visitor=new Visitor();
+                visitor.setVid(resultSet.getLong(1));
+                visitor.setPid(resultSet.getLong(2));
+                visitor.setDid(resultSet.getLong(3));
+                visitor.setDoctor_reccommend(resultSet.getString(4));
+                visitor.setMedicine(resultSet.getString(5));
+                v.add(visitor);
 
             }
 
@@ -89,7 +86,7 @@ public class Appointment_statusDAO {
             System.err.println(e.getMessage());
         }
         finally {
-            return a;
+            return v;
         }
     }
 }

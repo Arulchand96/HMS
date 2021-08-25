@@ -30,6 +30,7 @@ public class Appointment_status {
 
 
 
+
     public long getPid() {
         return pid;
     }
@@ -84,8 +85,9 @@ public class Appointment_status {
 
     public void setIs_firstvisit(int is_firstvisit) {
         this.is_firstvisit = is_firstvisit;
-
     }
+
+
 
 
 

@@ -26,7 +26,7 @@ public class Appointment_statusBO {
         System.out.print("Doctor visit:-");
         String doctor_visit = input.nextLine();
         System.out.print("is firstvisit:-");
-        int is_firstvisit = input.nextInt();
+        int  is_firstvisit = input.nextInt();
         Appointment_status a=new Appointment_status();
         a.setPid(pid);
         a.setDate_of_visit(date_of_visit);
@@ -68,5 +68,8 @@ public class Appointment_statusBO {
 
         }
     }
+
+
+
 
 }

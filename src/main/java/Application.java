@@ -55,7 +55,7 @@ public class Application
         while (status == 1) {
             System.out.println("\n                                    MAIN MENU");
             System.out.println("-----------------------------------------------------------------------------------");
-            System.out.println("1.Hospitals  2.Appointment   3.Doctors  4.Patients  5.Medicines     ");
+            System.out.println("1.Hospitals  2.Appointment   3.Doctors  4.Patients  5.Medicines   6.visitors  ");
             System.out.println("-----------------------------------------------------------------------------------");
             choice = input.nextInt();
             switch (choice) {
@@ -136,7 +136,7 @@ public class Application
                     while (s6 == 1)
                     {
                         int  b = 1, c =2;
-                        System.out.println("1.Add New Entry  2.Existing List ");
+                        System.out.println("1.Add New Entry  2.Existing List  3.IP patient List");
                         c1 = input.nextInt();
                         switch (c1)
                         {
@@ -190,7 +190,45 @@ public class Application
                                             System.err.println(e.getMessage());
                                         }*/
                                         break;
+
+
                                     }
+                            case 3:
+                            {
+                                try {
+                                    String myUrl = "jdbc:mysql://localhost:3306/HospitalMS";
+                                    String user = "root";
+                                    String pass = "8883543506";
+
+                                    Connection conn = DriverManager.getConnection(myUrl, user, pass);
+
+                                    String query = "SELECT * FROM ip_patient";
+
+                                    Statement st = conn.createStatement();
+
+
+                                    ResultSet rs = st.executeQuery(query);
+
+
+                                    while (rs.next()) {
+
+                                        int patient_id = rs.getInt("patient_id");
+                                        int ip_identification_number = rs.getInt("ip_identification_number");
+
+
+
+                                        // print the results
+                                        System.out.println("Patient id \t  ip identification number");
+                                        System.out.format("%s, %s,%s, %s,%s, %s, %s\n", patient_id, ip_identification_number);
+                                    }
+                                    st.close();
+                                } catch (Exception e) {
+                                    System.err.println("Got an exception! ");
+                                    System.err.println(e.getMessage());
+                                }
+                                break;
+                            }
+
 
                         }
                         System.out.println("\nReturn to Back Press 1 and for Main Menu Press 0");
@@ -364,50 +402,39 @@ public class Application
                             {
                               MedicineBO medicineBO=new MedicineBO();
                               medicineBO.viewMedicine();
+                                break;
+                            }
+                        }
+                        System.out.println("\nReturn to Back Press 1 and for Main Menu Press 0");
+                        s3 = input.nextInt();
+                    }
+                    break;
+                }
 
+                case 6:
+                {
 
-                                /* try {
-                                    String myUrl = "jdbc:mysql://localhost:3306/HospitalMS";
-                                    String user = "root";
-                                    String pass = "8883543506";
+                    s3 = 1;
+                    System.out.println("--------------------------------------------------------------------------------");
+                    System.out.println("                     **Visitors**");
+                    System.out.println("--------------------------------------------------------------------------------");
+                    while (s3 == 1)
+                    {
+                        System.out.println("1.Add New Visitors\n2. Existing visitors List");
+                        c1 = input.nextInt();
+                        switch (c1)
+                        {
+                            case 1:
+                            {
+                                VisitorBO visitorBO=new VisitorBO();
+                                visitorBO.createVisitor();
 
-                                    Connection conn = DriverManager.getConnection(myUrl, user, pass);
-
-                                    String query = "SELECT * FROM medicine";
-
-                                    Statement st = conn.createStatement();
-
-
-                                    ResultSet rs = st.executeQuery(query);
-
-
-                                    while (rs.next()) {
-
-
-
-                                        String name = rs.getString("name");
-                                        String comp = rs.getString("comp");
-                                        String exp_date = rs.getString("exp_date");
-                                        String cost = rs.getString("cost");
-                                        int count = rs.getInt("count");
-
-                                        System.out.println("--------------------------------------------------------------------------------");
-                                        System.out.println("Name \t Company \t Expiry Date \t Cost");
-                                        System.out.println("--------------------------------------------------------------------------------");
-                                        System.out.format("%s\t, %s\t,%s\t, %s\t,%s\n", name, comp, exp_date, cost, count);
-
-
-
-                                    }
-                                    st.close();
-                                } catch (Exception e) {
-                                    System.err.println("Got an exception! ");
-                                    System.err.println(e.getMessage());
-                                }*/
-
-
-
-
+                                break;
+                            }
+                            case 2:
+                            {
+                                VisitorBO visitorBO=new VisitorBO();
+                                visitorBO.viewVisitor();
 
                                 break;
                             }
@@ -417,6 +444,7 @@ public class Application
                     }
                     break;
                 }
+
 
 
                 default: {
