@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 public class PatientDAO {
 
-    String myUrl = "jdbc:mysql://localhost:3306/HospitalMS";
+    String myUrl = "jdbc:mysql://localhost:3306/HospitalMS?useSSL=false";
     String user = "root";
     String pass = "8883543506";
 
@@ -32,8 +32,8 @@ public class PatientDAO {
             Statement st = conn.createStatement();
 
             // note that i'm leaving "date_created" out of this insert statement
-            st.executeUpdate("INSERT INTO patient ( name, disease, sex, admit_status,age) "
-                    + "VALUES ('"+patient.getPname()+"','"+patient.getDisease()+"','"+patient.getSex()+"','"+patient.getAdmit_status()+"','"+patient.getAge()+"')");
+            st.executeUpdate("INSERT INTO patient ( name, dob, phoneno, type) "
+                    + "VALUES ('"+patient.getPname()+"','"+patient.getDob()+"','"+patient.getPhoneno()+"','"+patient.getType()+"')");
 
             conn.close();
             System.out.println("inserted sucessfully");
@@ -71,10 +71,9 @@ public class PatientDAO {
                 Patient patient=new Patient();
                 patient.setId(resultSet.getLong(1));
                 patient.setPname(resultSet.getString(2));
-                patient.setDisease(resultSet.getString(3));
-                patient.setAdmit_status(resultSet.getString(4));
-                patient.setSex(resultSet.getString(5));
-                patient.setAge(resultSet.getInt(6));
+                patient.setDob(resultSet.getString(3));
+                patient.setPhoneno(resultSet.getString(4));
+                patient.setType(resultSet.getString(5));
                 p.add(patient);
 
             }

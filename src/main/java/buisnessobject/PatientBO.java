@@ -15,20 +15,20 @@ public class PatientBO {
         Scanner input = new Scanner(System.in);
         System.out.print("name:-");
         String pname = input.nextLine();
-        System.out.print("disease:-");
-        String disease = input.nextLine();
-        System.out.print("sex:-");
-        String sex = input.nextLine();
-        System.out.print("admit_status:-");
-        String admit_status = input.nextLine();
-        System.out.print("age:-");
-        int age = input.nextInt();
+        System.out.print("dob:-");
+        String dob = input.nextLine();
+        System.out.print("phoneno:-");
+        String phoneno = input.nextLine();
+        System.out.print("type:-");
+        String type = input.nextLine();
+
+
         Patient patient=new Patient();
         patient.setPname(pname);
-        patient.setDisease(disease);
-        patient.setSex(sex);
-        patient.setAdmit_status(admit_status);
-        patient.setAge(age);
+        patient.setDob(dob);
+        patient.setPhoneno(phoneno);
+        patient.setType(type);
+
 
          PatientDAO patientDAO=new PatientDAO();
         patientDAO.save(patient);
@@ -53,10 +53,9 @@ public class PatientBO {
 
                 System.out.println(patient.getId());
                 System.out.println(patient.getPname());
-                System.out.println(patient.getDisease());
-                System.out.println(patient.getAdmit_status());
-                System.out.println(patient.getSex());
-                System.out.println(patient.getAge());
+                System.out.println(patient.getDob());
+                System.out.println(patient.getPhoneno());
+                System.out.println(patient.getType());
 
 
 

@@ -13,21 +13,23 @@ public class Appointment_statusBO {
 
     public void createAppointment_status() {
         Scanner input = new Scanner(System.in);
+
         System.out.print("Patient id:-");
         long pid = input.nextLong();
         System.out.print("Date of visit-");
-        String date_of_visit = input.nextLine();
+        String date_of_visit = input.next();
         System.out.print("Purpose of visit:-");
-        String purpose_of_visit = input.nextLine();
+        String purpose_of_visit = input.next();
         System.out.print("bp:-");
-        String bp = input.nextLine();
+        String bp = input.next();
         System.out.print("Temperature:-");
-        String temperature = input.nextLine();
+        String temperature = input.next();
         System.out.print("Doctor visit:-");
-        String doctor_visit = input.nextLine();
+        String doctor_visit = input.next();
         System.out.print("is firstvisit:-");
         int  is_firstvisit = input.nextInt();
         Appointment_status a=new Appointment_status();
+
         a.setPid(pid);
         a.setDate_of_visit(date_of_visit);
         a.setPurpose_of_visit(purpose_of_visit);
@@ -55,7 +57,7 @@ public class Appointment_statusBO {
                 Appointment_status appointment_status=it.next();
 
 
-
+                System.out.println(appointment_status.getAid());
                 System.out.println(appointment_status.getPid());
                 System.out.println(appointment_status.getDate_of_visit());
                 System.out.println(appointment_status.getPurpose_of_visit());

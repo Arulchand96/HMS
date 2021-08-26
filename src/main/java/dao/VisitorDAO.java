@@ -25,8 +25,8 @@ public class VisitorDAO {
             Statement st = conn.createStatement();
 
             // note that i'm leaving "date_created" out of this insert statement
-            st.executeUpdate("INSERT INTO visitor ( visitor_id, patient_id, doctor_id, doctor_reccomend, medicine) "
-                    + "VALUES ('" + visitor.getVid() + "','" + visitor.getPid() + "','" + visitor.getDid() + "','" + visitor.getDoctor_reccommend() + "','" +visitor.getMedicine() + "')");
+            st.executeUpdate("INSERT INTO visitor ( id, patientid, doctorid, doctor_recommend, medicine, follow) "
+                    + "VALUES ('" + visitor.getVid() + "','" + visitor.getPid() + "','" + visitor.getDid() + "','" + visitor.getDoctor_reccommend() + "','" +visitor.getMedicine() + "','" +visitor.getFollowup() + "')");
 
           /*  if(appointment_status.getIs_firstvisit() >3) {
 
@@ -64,7 +64,6 @@ public class VisitorDAO {
 
 
 
-//
             while (resultSet.next()) {
 
                 Visitor visitor=new Visitor();
@@ -73,6 +72,7 @@ public class VisitorDAO {
                 visitor.setDid(resultSet.getLong(3));
                 visitor.setDoctor_reccommend(resultSet.getString(4));
                 visitor.setMedicine(resultSet.getString(5));
+                visitor.setFollowup(resultSet.getString(6));
                 v.add(visitor);
 
             }

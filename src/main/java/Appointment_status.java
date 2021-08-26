@@ -14,6 +14,8 @@ public class Appointment_status {
         try {
 
             Scanner input = new Scanner(System.in);
+            System.out.print("Appointment id:-");
+            String aid = input.nextLine();
             System.out.print("Patient id:-");
             String pid = input.nextLine();
             System.out.print("Date of visit-");
@@ -40,8 +42,8 @@ public class Appointment_status {
             Statement st = conn.createStatement();
 
             // note that i'm leaving "date_created" out of this insert statement
-            st.executeUpdate("INSERT INTO appointment ( patient_id, date_of_visit, purpose_of_visit, BP, temperature, doctor_visit, is_firstvisit) "
-                    + "VALUES ('"+pid+"','"+date_of_visit+"','"+purpose_of_visit+"','"+bp+"','"+Temperature+"','"+Dotor_visit+"','"+is_firstvisit+"' )");
+            st.executeUpdate("INSERT INTO appointment ( appointment_id, patient_id, date_of_visit, purpose_of_visit, BP, temperature, doctor_visit, is_firstvisit) "
+                    + "VALUES ('"+aid+"','"+pid+"','"+date_of_visit+"','"+purpose_of_visit+"','"+bp+"','"+Temperature+"','"+Dotor_visit+"','"+is_firstvisit+"' )");
 
             conn.close();
             System.out.println("inserted sucessfully");

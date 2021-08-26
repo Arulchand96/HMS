@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 public class MedicineDAO {
 
-    String myUrl = "jdbc:mysql://localhost:3306/HospitalMS";
+    String myUrl = "jdbc:mysql://localhost:3306/HospitalMS?useSSL=false";
     String user = "root";
     String pass = "8883543506";
 

@@ -17,10 +17,10 @@ public class Patient {
 
     private long id;
     private String pname;
-    private String disease;
-    private String sex;
-    private String admit_status;
-    private int age;
+    private String dob;
+    private String phoneno;
+    private String type;
+
 
 
 
@@ -41,36 +41,27 @@ public class Patient {
         this.pname = pname;
     }
 
-    public String getDisease() {
-        return disease;
+    public String getDob() {
+        return dob;
     }
 
-    public void setDisease(String disease) {
-        this.disease = disease;
+    public void setDob(String dob) {
+        this.dob = dob;
     }
 
-    public String getSex() {
-        return sex;
+    public String getPhoneno() {
+        return phoneno;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex;
+    public void setPhoneno(String phoneno) {
+        this.phoneno = phoneno;
     }
 
-    public String getAdmit_status() {
-        return admit_status;
+    public String getType() {
+        return type;
     }
 
-    public void setAdmit_status(String admit_status) {
-        this.admit_status = admit_status;
+    public void setType(String type) {
+        this.type = type;
     }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
 }

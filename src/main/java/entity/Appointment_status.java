@@ -19,7 +19,7 @@ public class Appointment_status {
     String Dotor_visit = input.nextLine();
             System.out.print("is firstvisit:-");
     int is_firstvisit = input.nextInt();*/
-
+    private  long aid;
     private long pid;
     private String date_of_visit;
     private String purpose_of_visit;
@@ -28,8 +28,13 @@ public class Appointment_status {
     private String doctor_visit;
     private int is_firstvisit;
 
+    public long getAid() {
+        return aid;
+    }
 
-
+    public void setAid(long aid) {
+        this.aid = aid;
+    }
 
     public long getPid() {
         return pid;

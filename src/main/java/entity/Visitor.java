@@ -27,6 +27,7 @@ public class Visitor {
     private long did;
     private String doctor_reccommend;
     private String medicine;
+    private String followup;
 
     public long getVid() {
         return vid;
@@ -66,5 +67,13 @@ public class Visitor {
 
     public void setMedicine(String medicine) {
         this.medicine = medicine;
+    }
+
+    public String getFollowup() {
+        return followup;
+    }
+
+    public void setFollowup(String followup) {
+        this.followup = followup;
     }
 }

@@ -12,24 +12,26 @@ public class VisitorBO {
 
     public void createVisitor() {
         Scanner input = new Scanner(System.in);
-        System.out.print("Visitor id:-");
-        long vid = input.nextLong();
+
         System.out.print("Patient id:-");
         long pid = input.nextLong();
         System.out.print("Doctor id:-");
         long did = input.nextLong();
         System.out.print("Doctor recommendation:-");
-        String doctor_recommend = input.nextLine();
+        String doctor_recommend = input.next();
         System.out.print("Medicine:-");
-        String medicine = input.nextLine();
+        String medicine = input.next();
+        System.out.print("Followup Need:-");
+        String followup = input.next();
 
         Visitor visitor=new Visitor();
 
-        visitor.setVid(vid);
+
         visitor.setPid(pid);
         visitor.setDid(did);
         visitor.setDoctor_reccommend(doctor_recommend);
         visitor.setMedicine(medicine);
+        visitor.setFollowup(followup);
 
        VisitorDAO visitorDAO=new VisitorDAO();
         visitorDAO.save(visitor);
@@ -58,6 +60,7 @@ public class VisitorBO {
                 System.out.println(visitor.getDid());
                 System.out.println(visitor.getDoctor_reccommend());
                 System.out.println(visitor.getMedicine());
+                System.out.println(visitor.getFollowup());
 
 
             }

@@ -69,13 +69,14 @@ public class Appointment_statusDAO {
             while (resultSet.next()) {
 
                 Appointment_status appointment_status=new Appointment_status();
-                appointment_status.setPid(resultSet.getLong(1));
-                appointment_status.setDate_of_visit(resultSet.getString(2));
-                appointment_status.setPurpose_of_visit(resultSet.getString(3));
-                appointment_status.setBp(resultSet.getString(4));
-                appointment_status.setTemperature(resultSet.getString(5));
-                appointment_status.setDoctor_visit(resultSet.getString(6));
-                appointment_status.setIs_firstvisit(resultSet.getInt(7));
+                appointment_status.setAid(resultSet.getLong(1));
+                appointment_status.setPid(resultSet.getLong(2));
+                appointment_status.setDate_of_visit(resultSet.getString(3));
+                appointment_status.setPurpose_of_visit(resultSet.getString(4));
+                appointment_status.setBp(resultSet.getString(5));
+                appointment_status.setTemperature(resultSet.getString(6));
+                appointment_status.setDoctor_visit(resultSet.getString(7));
+                appointment_status.setIs_firstvisit(resultSet.getInt(8));
                 a.add(appointment_status);
 
             }
