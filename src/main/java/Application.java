@@ -20,7 +20,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class Application
+public class Application extends DoctorBO
 {
     public static void main(String args[]) {
         String months[] = {
@@ -243,7 +243,7 @@ public class Application
                     System.out.println("--------------------------------------------------------------------------------");
                     while (s3 == 1)
                     {
-                        System.out.println("1.Add New Visitors\n2. Existing visitors List");
+                        System.out.println("1.Add New Visitors\n2. Existing visitors List\n 3.Need to admit");
                         c1 = input.nextInt();
                         switch (c1)
                         {
@@ -258,6 +258,13 @@ public class Application
                             {
                                 VisitorBO visitorBO=new VisitorBO();
                                 visitorBO.viewVisitor();
+
+                                break;
+                            }
+                            case 3:
+                            {
+                                InPatientBO inPatientBO=new InPatientBO();
+                                inPatientBO.createPatient();
 
                                 break;
                             }

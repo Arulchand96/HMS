@@ -33,7 +33,7 @@ public class DoctorBO {
         doctorDAO.save(doctor);
     }
 
-    public void viewDoctor() {
+     public void viewDoctor() {
 
 
         DoctorDAO doctorDAO=new DoctorDAO();

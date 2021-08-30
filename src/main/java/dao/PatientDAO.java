@@ -90,4 +90,30 @@ public class PatientDAO {
             return p;
         }
     }
+    public void update(int patient) {
+
+
+        try {
+
+            // create a mysql database connection
+            //String myDriver = "com.mysql.cj.jdbc.Driver";
+
+
+            //Class.forName(myDriver);
+            Connection conn = DriverManager.getConnection(myUrl, user, pass);
+
+            Statement st = conn.createStatement();
+
+            // note that i'm leaving "date_created" out of this insert statement
+            st.executeUpdate("update from patient set type='IP' where id='"+patient+"'");
+
+            conn.close();
+            System.out.println("inserted sucessfully");
+        } catch (Exception e) {
+            System.err.println("Got an exception!");
+            System.err.println(e.getMessage());
+        }
+
+    }
 }
+
