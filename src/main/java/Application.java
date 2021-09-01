@@ -264,7 +264,7 @@ public class Application extends DoctorBO
                             case 3:
                             {
                                 InPatientBO inPatientBO=new InPatientBO();
-                                inPatientBO.createPatient();
+                                inPatientBO.update();
 
                                 break;
                             }

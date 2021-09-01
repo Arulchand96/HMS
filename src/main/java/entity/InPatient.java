@@ -8,6 +8,8 @@ public class InPatient {
    // private String type;
     private long pid;
     private String type;
+    private long identityNo;
+    private int bedid;
 
 
     public long getPid() {
@@ -64,5 +66,21 @@ public class InPatient {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public long getIdentityNo() {
+        return identityNo;
+    }
+
+    public void setIdentityNo(long identityNo) {
+        this.identityNo = identityNo;
+    }
+
+    public int getBedid() {
+        return bedid;
+    }
+
+    public void setBedid(int bedid) {
+        this.bedid = bedid;
     }
 }

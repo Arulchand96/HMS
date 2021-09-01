@@ -1,5 +1,6 @@
 package dao;
 
+import buisnessobject.InPatientBO;
 import entity.Doctor;
 import entity.Patient;
 
@@ -104,11 +105,39 @@ public class PatientDAO {
 
             Statement st = conn.createStatement();
 
+
             // note that i'm leaving "date_created" out of this insert statement
-            st.executeUpdate("update from patient set type='IP' where id='"+patient+"'");
+            st.executeUpdate("update patient set type='IP' where id="+patient+"");
 
             conn.close();
-            System.out.println("inserted sucessfully");
+            //System.out.println("inserted sucessfully");
+        } catch (Exception e) {
+            System.err.println("Got an exception!");
+            System.err.println(e.getMessage());
+        }
+
+    }
+    public void insertIpPatient(int patient,long identity,int bedid ) {
+
+
+        try {
+
+            // create a mysql database connection
+            //String myDriver = "com.mysql.cj.jdbc.Driver";
+
+
+            //Class.forName(myDriver);
+            Connection conn = DriverManager.getConnection(myUrl, user, pass);
+
+            Statement st = conn.createStatement();
+
+
+            // note that i'm leaving "date_created" out of this insert statement
+            st.executeUpdate("INSERT INTO ip_patient ( patientid, identificationno, bedid) "
+                    + "VALUES ('"+patient+"','"+identity+"','"+bedid+"')");
+
+            conn.close();
+            System.out.println("Room booked for IP patients");
         } catch (Exception e) {
             System.err.println("Got an exception!");
             System.err.println(e.getMessage());
