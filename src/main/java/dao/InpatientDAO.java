@@ -2,6 +2,7 @@ package dao;
 
 import buisnessobject.InPatientBO;
 import buisnessobject.PatientBO;
+import entity.Bed;
 import entity.InPatient;
 import entity.Patient;
 
@@ -79,7 +80,8 @@ public class InpatientDAO {
 
                     Random random = new Random();
                     int identity = random.nextInt(9999);
-                    int bed= random.nextInt(9999);
+
+                     int bed= random.nextInt(9999);
 
 
 
@@ -87,6 +89,12 @@ public class InpatientDAO {
                     //inpatientBO.;
 
                     patient1.insertIpPatient(patient,identity,bed);
+                    BedDAO bedDAO=new BedDAO();
+                    bedDAO.saveBed(bed);
+
+                    System.out.println("Bed Allocation for Ip patients");
+                    bedDAO.find();
+
 
 
 

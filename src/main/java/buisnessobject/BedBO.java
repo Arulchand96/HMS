@@ -1,5 +1,5 @@
 package buisnessobject;
-
+import buisnessobject.InPatientBO;
 import dao.BedDAO;
 import dao.InpatientDAO;
 import dao.PatientDAO;
@@ -14,21 +14,29 @@ public class BedBO {
 
     public void createBed() {
         Scanner input = new Scanner(System.in);
-        System.out.print("Bed id:-");
-        int bedId = input.nextInt();
+        //System.out.print("Bed id:-");
+        //int bedId = input.nextInt();
         System.out.print("Bed type:-");
-        String bedType = input.nextLine();
+        String bedType = input.next();
         System.out.print("Room name:-");
-        String roomName = input.nextLine();
+        String roomName = input.next();
 
 
-        Bed bed = new Bed();
-        bed.setBedId(bedId);
-        bed.setBedType(bedType);
-        bed.setRoomName(roomName);
+        Bed bed1 = new Bed();
+        //bed.setBedId(bedId);
+        bed1.setBedType(bedType);
+        bed1.setRoomName(roomName);
 
 
-        //InpatientDAO inPatientDAO=new InpatientDAO();
-        //List<Bed> bed =inPatientDAO.s();
+
+        //BedDAO bedDAO= new BedDAO();
+
+
+        //bedDAO.saveBed(bed);
+
+
+
+
+
     }
 }
