@@ -17,7 +17,7 @@ public class BedDAO {
     String user = "root";
     String pass = "8883543506";
 
-    public void saveBed(int bed) {
+    public void saveBed() {
 
         Bed bed1=new Bed();
 
@@ -41,8 +41,8 @@ public class BedDAO {
 
             Statement st = conn.createStatement();
 
-            st.executeUpdate("INSERT INTO bed ( bedid, bedtype, roomname ) "
-                    + "VALUES ('"+bed+"','"+bed1.getBedType()+"','"+bed1.getRoomName()+"')");
+            st.executeUpdate("INSERT INTO bed ( bedtype, roomname ) "
+                    + "VALUES ('"+bed1.getBedType()+"','"+bed1.getRoomName()+"')");
             //Bed bed=new Bed();
             //beds.add(bed);
 

@@ -144,5 +144,49 @@ public class PatientDAO {
         }
 
     }
+
+    public List<Patient> one() {
+
+
+        List<Patient> p = new ArrayList<Patient>();
+
+        try {
+
+            System.out.println("hi");
+
+            Connection conn = DriverManager.getConnection(myUrl, user, pass);
+
+            String query = "SELECT id,name FROM patient;";
+
+            Statement st = conn.createStatement();
+
+
+            ResultSet resultSet = st.executeQuery(query);
+
+
+            while (resultSet.next()) {
+
+                Patient patient = new Patient();
+                patient.setId(resultSet.getLong(1));
+                patient.setPname(resultSet.getString(2));
+                //patient.setDob(resultSet.getString(3));
+                //patient.setPhoneno(resultSet.getString(4));
+                //patient.setType(resultSet.getString(5));
+
+                p.add(patient);
+
+            }
+
+
+            st.close();
+        } catch (Exception e) {
+            System.err.println("Got an exception! ");
+            System.err.println(e.getMessage());
+        } finally {
+            return p;
+        }
+
+
+    }
 }
 

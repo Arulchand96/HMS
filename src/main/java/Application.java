@@ -1,6 +1,7 @@
 import buisnessobject.*;
 import dao.Appointment_statusDAO;
 import dao.PatientDAO;
+import dao.Report;
 
 import java.io.*;
 import java.sql.Connection;
@@ -55,7 +56,7 @@ public class Application extends DoctorBO
         while (status == 1) {
             System.out.println("\n                                    MAIN MENU");
             System.out.println("-----------------------------------------------------------------------------------");
-            System.out.println("1.Hospitals  2.Doctors   3.Patients  4.Medicines  5.Appointments   6.visitors  ");
+            System.out.println("1.Hospitals  2.Doctors   3.Patients  4.Medicines  5.Appointments   6.visitors  7.Reports  ");
             System.out.println("-----------------------------------------------------------------------------------");
             choice = input.nextInt();
             switch (choice) {
@@ -251,6 +252,47 @@ public class Application extends DoctorBO
                             {
                                 VisitorBO visitorBO=new VisitorBO();
                                 visitorBO.createVisitor();
+
+                                break;
+                            }
+                            case 2:
+                            {
+                                VisitorBO visitorBO=new VisitorBO();
+                                visitorBO.viewVisitor();
+
+                                break;
+                            }
+                            case 3:
+                            {
+                                InPatientBO inPatientBO=new InPatientBO();
+                                inPatientBO.update();
+
+                                break;
+                            }
+                        }
+                        System.out.println("\nReturn to Back Press 1 and for Main Menu Press 0");
+                        s3 = input.nextInt();
+                    }
+                    break;
+                }
+
+                case 7:
+                {
+
+                    s3 = 1;
+                    System.out.println("--------------------------------------------------------------------------------");
+                    System.out.println("                     **Reports**");
+                    System.out.println("--------------------------------------------------------------------------------");
+                    while (s3 == 1)
+                    {
+                        System.out.println("1.patient details for the patient name/id\n");
+                        c1 = input.nextInt();
+                        switch (c1)
+                        {
+                            case 1:
+                            {
+                                Report report=new Report();
+                                //report.one();
 
                                 break;
                             }
