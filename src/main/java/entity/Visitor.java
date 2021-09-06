@@ -1,5 +1,7 @@
 package entity;
 
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Visitor {
@@ -22,19 +24,22 @@ public class Visitor {
 
 
 
-    private long vid;
+    private long id;
     private long pid;
     private long did;
     private String doctor_reccommend;
     private String medicine;
-    private String followup;
+    private Boolean followup;
+    private String from;
+    private String to;
+    private String visitdate;
 
-    public long getVid() {
-        return vid;
+    public long getId() {
+        return id;
     }
 
-    public void setVid(long vid) {
-       vid = vid;
+    public void setId(long id) {
+       id = id;
     }
 
     public long getPid() {
@@ -69,11 +74,35 @@ public class Visitor {
         this.medicine = medicine;
     }
 
-    public String getFollowup() {
-        return followup;
+    public Boolean getFollowup() {
+        return followup ;
     }
 
-    public void setFollowup(String followup) {
+    public void setFollowup(boolean followup) {
         this.followup = followup;
+    }
+
+    public String getFrom() {
+        return from;
+    }
+
+    public void setFrom(String from) {
+        this.from = from;
+    }
+
+    public String getTo() {
+        return to;
+    }
+
+    public void setTo(String to) {
+        this.to = to;
+    }
+
+    public String getVisitdate() {
+        return visitdate;
+    }
+
+    public void setVisitdate(String visitdate) {
+        this.visitdate = visitdate;
     }
 }

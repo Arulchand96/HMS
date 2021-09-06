@@ -285,30 +285,68 @@ public class Application extends DoctorBO
                     System.out.println("--------------------------------------------------------------------------------");
                     while (s3 == 1)
                     {
-                        System.out.println("1.patient details for the patient name/id\n");
+                        System.out.println(" 1.Patient details for the patient name/id\n 2.List of visit for the patient Id\n 3.The visit details for given date range\n 4.List of patient who needs the followup visit\n 5.The list of patient by doctor\n 6.In-patient list\n 7.Out-patient list\n 8.Display the today’s visited patient");
                         c1 = input.nextInt();
                         switch (c1)
                         {
                             case 1:
                             {
-                                Report report=new Report();
-                                //report.one();
+
+                                PatientBO PatientBO=new PatientBO();
+                                PatientBO.createReportOne();
 
                                 break;
                             }
                             case 2:
                             {
                                 VisitorBO visitorBO=new VisitorBO();
-                                visitorBO.viewVisitor();
+                                visitorBO.createReportTwo();
 
                                 break;
                             }
                             case 3:
                             {
-                                InPatientBO inPatientBO=new InPatientBO();
-                                inPatientBO.update();
+                                VisitorBO visitorBO=new VisitorBO();
+                                visitorBO.createReportThree();
 
                                 break;
+                            }
+                            case 4:
+                            {
+                                VisitorBO visitorBO=new VisitorBO();
+                                visitorBO.createReportFour();
+
+                                break;
+                            }
+                            case 5:
+                            {
+                                VisitorBO visitorBO=new VisitorBO();
+                                visitorBO.createReportFive();
+
+                                break;
+                            }
+                            case 6:
+                            {
+                                System.out.println("IP patients list");
+                                PatientDAO patientDAO=new PatientDAO();
+                                patientDAO.reportSix();
+
+                                break;
+                            }
+                            case 7:
+                            {
+                                System.out.println("OP patients list");
+                                PatientDAO patientDAO=new PatientDAO();
+                                patientDAO.reportSeven();
+
+                                break;
+
+                            }
+                            case 8:
+                            {
+                                VisitorBO visitorBO=new VisitorBO();
+                                visitorBO.createReportEight();
+
                             }
                         }
                         System.out.println("\nReturn to Back Press 1 and for Main Menu Press 0");

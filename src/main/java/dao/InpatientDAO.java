@@ -83,7 +83,7 @@ public class InpatientDAO {
 
 
 
-                     //int bed= random.nextInt(9999);
+                     int bed= random.nextInt(9999);
 
 
 
