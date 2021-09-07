@@ -2,6 +2,8 @@ import buisnessobject.*;
 import dao.Appointment_statusDAO;
 import dao.PatientDAO;
 import dao.Report;
+import entity.Time;
+import entity.CurrentDate;
 
 import java.io.*;
 import java.sql.Connection;
@@ -56,7 +58,7 @@ public class Application extends DoctorBO
         while (status == 1) {
             System.out.println("\n                                    MAIN MENU");
             System.out.println("-----------------------------------------------------------------------------------");
-            System.out.println("1.Hospitals  2.Doctors   3.Patients  4.Medicines  5.Appointments   6.visitors  7.Reports  ");
+            System.out.println("1.Hospitals  2.Doctors   3.Patients  4.Medicines  5.Appointments   6.visitors  7.Reports 8.Time and Date  ");
             System.out.println("-----------------------------------------------------------------------------------");
             choice = input.nextInt();
             switch (choice) {
@@ -347,6 +349,51 @@ public class Application extends DoctorBO
                                 VisitorBO visitorBO=new VisitorBO();
                                 visitorBO.createReportEight();
 
+                            }
+                        }
+                        System.out.println("\nReturn to Back Press 1 and for Main Menu Press 0");
+                        s3 = input.nextInt();
+                    }
+                    break;
+                }
+
+
+                case 8:
+                {
+
+                    s3 = 1;
+                    System.out.println("--------------------------------------------------------------------------------");
+                    System.out.println("                     **Time and Date**");
+                    System.out.println("--------------------------------------------------------------------------------");
+                    while (s3 == 1)
+                    {
+                        System.out.println(" 1.Current time as string in 12hrs format\n 2.Current time as string in 24hrs format\n 3.current date in string format\n 4.Method to return current date ");
+                        c1 = input.nextInt();
+                        switch (c1)
+                        {
+                            case 1:
+                            {
+                                Time time=new Time();
+                                time.currentTimeTwelve();
+                                break;
+                            }
+                            case 2:
+                            {
+                                Time time=new Time();
+                                time.currentTimeTwentyFour();
+                                break;
+                            }
+                            case 3:
+                            {
+                                CurrentDate date=new CurrentDate();
+                                date.currentDate();
+                                break;
+                            }
+                            case 4:
+                            {
+                                CurrentDate date=new CurrentDate();
+                                date.returnCurrentDate();
+                                break;
                             }
                         }
                         System.out.println("\nReturn to Back Press 1 and for Main Menu Press 0");
