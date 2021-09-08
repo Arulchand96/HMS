@@ -1,27 +1,8 @@
 import buisnessobject.*;
-import dao.Appointment_statusDAO;
 import dao.PatientDAO;
-import dao.Report;
-import entity.Time;
-import entity.CurrentDate;
 
-import java.io.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.Statement;
 import java.util.*;
 import java.util.Calendar;
-import java.io.*;
-import java.util.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 public class Application extends DoctorBO
 {
@@ -371,30 +352,8 @@ public class Application extends DoctorBO
                         c1 = input.nextInt();
                         switch (c1)
                         {
-                            case 1:
-                            {
-                                Time time=new Time();
-                                time.currentTimeTwelve();
-                                break;
-                            }
-                            case 2:
-                            {
-                                Time time=new Time();
-                                time.currentTimeTwentyFour();
-                                break;
-                            }
-                            case 3:
-                            {
-                                CurrentDate date=new CurrentDate();
-                                //date.currentDate();
-                                break;
-                            }
-                            case 4:
-                            {
-                                CurrentDate date=new CurrentDate();
-                                date.returnCurrentDate();
-                                break;
-                            }
+
+
                         }
                         System.out.println("\nReturn to Back Press 1 and for Main Menu Press 0");
                         s3 = input.nextInt();
