@@ -9,20 +9,20 @@ public class CurrentDate {
 
 
 
-    String currentDate() {
+  /*  String currentDate() {
 
         java.util.Date date=new java.util.Date();
         System.out.println("Current Date:"+date);
 
 
 
-        /*DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
         LocalDateTime now = LocalDateTime.now();
         String date=dtf.format(now);
 
-        System.out.println("Current Date:"+date);*/
+        System.out.println("Current Date:"+date);
 
-    }
+    }*/
 
     public void returnCurrentDate() {
 

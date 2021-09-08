@@ -386,7 +386,7 @@ public class Application extends DoctorBO
                             case 3:
                             {
                                 CurrentDate date=new CurrentDate();
-                                date.currentDate();
+                                //date.currentDate();
                                 break;
                             }
                             case 4:
