@@ -3,6 +3,8 @@ package utility;
 import java.util.Calendar;
 import java.text.*;
 import java.util.*;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
 
 
 public class DateUtility {
@@ -47,58 +49,55 @@ public class DateUtility {
         return new SimpleDateFormat("MM/dd/yyyy").format(Calendar.getInstance().getTime());
     }
 
-    /*public static String convertDateToString() {
+    public static String convertDateToString(Date date) {
+        if(date==null) {
+            date = Calendar.getInstance().getTime();
+        }
+        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        String dateToString = dateFormat.format(date);
 
-        DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+        return dateToString;
 
-        Scanner input = new Scanner(System.in);
-        System.out.print("Date Format:-");
-        Date today = ;
-        today = Calendar.getInstance().getTime();
+    }
 
-        String reportDateInString = df.format(today);
+    public static Date getStringToDate(String stringDate)   {
 
-// Print what date is today!
-        //System.out.println("Report Date: " + reportDate);
-        return reportDateInString;
-
-    }*/
-
-    public static Date convertStringToDate() {
-
-        Date date=null;
+        Date date1=null;
 
         try {
 
-            Scanner input = new Scanner(System.in);
-            input.useDelimiter(",");
-            System.out.println("Date In String format");
-            String dateString = input.next();
-            DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy)");
-             date = formatter.parse(dateString);
-            //System.out.println(date);
-            //sale.setDate(sc.next());
+             date1 = new SimpleDateFormat("MM/dd/yyyy").parse(stringDate);
+        }
+        catch(Exception e) {
 
-           // return date;
-        } catch (Exception e) {
-            System.out.println("Given Format is wrong");
+            date1=Calendar.getInstance().getTime();
 
         }
-        finally
-        {
-            System.out.println("Thank you for using the program!");
-            //return date;
-            //so would I need to put a return value of type double here?
-        }
-        return date;
+
+        return date1;
+    }
+
+    public static  Date lastDate(String stringDate) throws Exception {
+
+        //Date date1=new SimpleDateFormat("MM/dd/yyyy").parse(stringDate);
+        Date date1=getStringToDate(stringDate);
+
+        Calendar c = Calendar.getInstance();
+        c.setTime(date1);
+        c.set(Calendar.DAY_OF_MONTH, c.getActualMaximum(Calendar.DAY_OF_MONTH));
+        return c.getTime();
+    }
+
+    public static  Date firstDate(String stringDate) throws Exception {
+
+        Date date1=getStringToDate(stringDate);
+        Calendar c = Calendar.getInstance();
+        c.setTime(date1);
+        c.set(Calendar.DAY_OF_MONTH, c.getActualMinimum(Calendar.DAY_OF_MONTH));
+        return c.getTime();
     }
 
 
 }
-
-
-
-
-
 
 
