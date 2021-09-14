@@ -45,21 +45,24 @@ public class UtilityTest {
         System.out.println(DateUtility.subOneHour(date));
         System.out.println(DateUtility.addOneDay(date));
         System.out.println(DateUtility.subOneDay(date));*/
-        Scanner input=new Scanner(System.in);
-        System.out.println("Given Date and Time :");
-        String stringDate =input.nextLine();
-        Date date1=DateUtility.getStringToDate(stringDate);
-        System.out.println("add one hour with given date and time:"+DateUtility.addOneHour(date1));
+
+        System.out.println("add one hour with given date and time:"+DateUtility.addOneHour(DateUtility.getStringToDateAndTime("11/11/2011 12:12 AM")));
         System.out.println("------------------------------------------------------------------------");
-        System.out.println("Enter the start date and time:");
-        String stringDate1=input.nextLine();
-        System.out.println("Enter the end date and time:");
-        String stringDate2=input.nextLine();
-        Date date2=DateUtility.getStringToDate(stringDate1);
-        Date date3=DateUtility.getStringToDate(stringDate2);
-        DateUtility.findDifference(date2,date3);
-        long result[]=DateUtility.findDifference();
-        System.out.println(DateUtility.findDifference(Arrays.toString(result[0])) + " days, " + difference_In_Hours + " hours, " + difference_In_Minutes + " minutes, " + difference_In_Seconds + " seconds");
+        System.out.println(DateUtility.g(DateUtility.getStringToDateAndTime("12/11/2012 12:14:12"),DateUtility.getStringToDateAndTime("12/11/2012 12:15:7")));
+
+        //System.out.print(result[0]+"Day ");
+        //System.out.print(result[1]+"Hr ");
+        //System.out.print(result[2]+"Min ");
+       // System.out.print(result[3]+"Sec ");
+        //System.out.println(Arrays.toString(result[]));
+        System.out.println("------------------------------------------------------------------------");
+        DateUtility.addOneHourByGivenDateAndHour(DateUtility.getStringToDateAndTime("12/12/2012 12:14:12"),1);
+
+        System.out.println("------------------------------------------------------------------------");
+
+        System.out.println(DateUtility.getDatesBetween(DateUtility.getStringToDate("27/08/2010"),DateUtility.getStringToDate("02/09/2010")));
+        System.out.println("------------------------------------------------------------------------");
+        System.out.println(""+DateUtility.getDateFormat(DateUtility.getStringToDateAndTime("10/12/2012 12:14:12"),"dd/MM/YYYY"));
 
 
     }
