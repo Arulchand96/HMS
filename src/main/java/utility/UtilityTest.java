@@ -48,7 +48,7 @@ public class UtilityTest {
 
         System.out.println("add one hour with given date and time:"+DateUtility.addOneHour(DateUtility.getStringToDateAndTime("11/11/2011 12:12 AM")));
         System.out.println("------------------------------------------------------------------------");
-        System.out.println(DateUtility.g(DateUtility.getStringToDateAndTime("12/11/2012 12:14:12"),DateUtility.getStringToDateAndTime("12/11/2012 12:15:7")));
+       // System.out.println(DateUtility.g(DateUtility.getStringToDateAndTime("12/11/2012 12:14:12"),DateUtility.getStringToDateAndTime("12/11/2012 12:15:7")));
 
         //System.out.print(result[0]+"Day ");
         //System.out.print(result[1]+"Hr ");
@@ -60,7 +60,7 @@ public class UtilityTest {
 
         System.out.println("------------------------------------------------------------------------");
 
-        System.out.println(DateUtility.getDatesBetween(DateUtility.getStringToDate("27/08/2010"),DateUtility.getStringToDate("02/09/2010")));
+        //System.out.println(DateUtility.getDatesBetween(DateUtility.getStringToDate("27/08/2010"),DateUtility.getStringToDate("02/09/2010")));
         System.out.println("------------------------------------------------------------------------");
         System.out.println(""+DateUtility.getDateFormat(DateUtility.getStringToDateAndTime("10/12/2012 12:14:12"),"dd/MM/YYYY"));
 
