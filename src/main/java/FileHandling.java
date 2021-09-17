@@ -7,7 +7,7 @@ import java.util.*;
 
 public class FileHandling  {
 
-//Find the word count in "Busoft.txt" text file?
+//3.Find the word count in "Busoft.txt" text file?
     public static void wordsCount() {
         try {
             File file = new File("C:\\Users\\Dell\\Desktop\\Busoft.txt");
@@ -61,7 +61,47 @@ public class FileHandling  {
         }
     }
 
+//5.Find the given word's count from "Busoft.txt" text file?- Use scanner to get the word i/p from user - Need to handling exception
+    public static void getInputFromUser() {
 
+        try {
+        int cnt=0;
+        String s;
+        String[] buffer;
+        File file = new File("C:\\Users\\Dell\\Desktop\\Busoft.txt");
+        FileInputStream fileInputStream = new FileInputStream(file);
+        InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
+        BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the word: ");
+        String wrd=sc.nextLine();
+        while((s=bufferedReader.readLine())!=null)
+        {
+            buffer=s.split(" ");
+            for (String chr : buffer)
+            {
+                if (chr.equals(wrd))
+                {
+                    cnt++;
+                }
+            }
+        }
+        if(cnt==0)
+        {
+            System.out.println("Word not found!");
+        }
+        else
+        {
+            System.out.println("Word : "+wrd+" found! Count : "+cnt);
+        }
+    } catch (FileNotFoundException ex) {
+        ex.printStackTrace();
+    } catch (IOException ex2) {
+        ex2.printStackTrace();
+    }
+
+
+    }
 
 
 
@@ -99,11 +139,14 @@ public class FileHandling  {
 
     public static void main(String args[]) throws Exception  {
 
-//Find the word count in "Busoft.txt" text file?
+//3.Find the word count in "Busoft.txt" text file?
         FileHandling.wordsCount();
 
 //4. Find the each words with their counts in "Busoft.txt" text file?
         FileHandling.findEachWords();
+
+//5.Find the given word's count from "Busoft.txt" text file?- Use scanner to get the word i/p from user - Need to handling exception
+        FileHandling.getInputFromUser();
 
     }
 
