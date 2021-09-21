@@ -361,30 +361,31 @@ public class Employee {
                     employee.setSalary(salary);
                     employee.setExperience(experience);
                     employees.add(employee);
+                    String selectedName = employees.get(i).getName();
+                    String selectedRole = employees.get(i).getRole();
+                    String selectedSupport = employees.get(i).getSupport();
+                    Long selectedSalary = employees.get(i).getSalary();
+                    String selectedExperience = employees.get(i).getExperience();
                     String targetName = "Development";
                     Employee result = null;
                     for (Employee employee2 : employees) {
-                        if (targetName.equals(employee2.getSupport())) {
-                            //Long minimum = employee2.getSalary();
-                            Long mininum = Collections.min(Arrays.asList(employees.get(i).getSalary()));
-                            //System.out.println(mininum);
-                            if(mininum.equals(employees.get(i).getSalary())) {
-                                String selectedName = employees.get(i).getName();
-                                String selectedRole = employees.get(i).getRole();
-                                String selectedSupport = employees.get(i).getSupport();
-                                Long selectedSalary = employees.get(i).getSalary();
-                                String selectedExperience = employees.get(i).getExperience();
-                                System.out.format("%20s %30s %20s %20s %20s", selectedName, selectedRole, selectedSupport, selectedSalary, selectedExperience);
-                                System.out.println();
-                                break;
-                            }
+                        long minimum = employees.get(0).getSalary();
+                        for (i = 1; i < employees.size(); i++) {
+                            //if (minimum > employees.get(i).getSalary())
+                                minimum = employees.get(i).getSalary();
+                            System.out.println(minimum);
                         }
                     }
                     i++;
                 }
+
             }
+
+
+
             System.out.println("------------------------------------------------------------------------------------------------------------------------");
             System.out.println();
+
         }
         catch (Exception e){
 
