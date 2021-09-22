@@ -152,15 +152,17 @@ public class Employee {
                         }
                     }
                     i++;
-                }
-            }
-            System.out.println("------------------------------------------------------------------------------------------------------------------------");
-            System.out.println();
-        }
-        catch (Exception e){
 
+                }
+                System.out.println("------------------------------------------------------------------------------------------------------------------------");
+                System.out.println();
+            }
         }
-    }
+        catch(Exception e){
+
+            }
+        }
+
 
 //List All the employees in IT team
     public static void allTheEmployeesInITTeam(Employee employee) {
