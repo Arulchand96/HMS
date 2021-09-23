@@ -46,10 +46,12 @@ public class FileHandling  {
             FileInputStream fileInputStream = new FileInputStream(file);
             InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-            String line;
+            String line = bufferedReader.readLine();
             int wordCount = 0;
-            while ((line = bufferedReader.readLine()) != null) {
-                String words[] = line.split("\\s+");
+            //im not a loser -1
+
+            while ((line) != null) {
+                String words[] = line.split("im\\s+");
                 wordCount += words.length;
             }
             System.out.println("The Number of words: "
