@@ -13,12 +13,6 @@ public class FileHandling  {
         boolean result;
         try{
             result=file.createNewFile();
-            if(result){
-                System.out.println("File created"+file.getCanonicalPath());
-            }
-            else {
-                System.out.println("File already exist at location"+file.getCanonicalPath());
-            }
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -80,13 +74,10 @@ public class FileHandling  {
             Iterator itr = arr.iterator();
             while (itr.hasNext()) {
                 i++;
-
                 listOfWords.put((String) itr.next(), i);
                 System.out.println(listOfWords);    //for Printing the words
             }
-
             Set<Object> uniqueValues = new HashSet<Object>(listOfWords.values());
-
             System.out.println("The number of unique words: " + uniqueValues.size());
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
