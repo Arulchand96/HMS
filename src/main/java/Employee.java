@@ -17,7 +17,7 @@ public class Employee {
     String role;
     String support;
     double salary;
-    String experience;
+    int experience;
 
     public String getName() {
         return name;
@@ -50,13 +50,24 @@ public class Employee {
         this.salary = salary;
     }
 
-    public String getExperience() {
+    public int getExperience() {
         return experience;
     }
 
-    public void setExperience(String experience) {
+    public void setExperience(int experience) {
         this.experience = experience;
     }
+
+    /*public static void createNewFile() {
+        File file=new File("C:\\Users\\Dell\\Desktop\\Busoft_Employee_Detail.txt");
+        boolean result;
+        try{
+            result=file.createNewFile();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }*/
 
 //List All the employees
     public static List<Employee> allTheEmployees() {
@@ -73,7 +84,7 @@ public class Employee {
                     String role = scanner.next();
                     String support = scanner.next();
                     double salary = scanner.nextDouble();
-                    String experience = scanner.next();
+                    int experience = scanner.nextInt();
                     Employee employee=new Employee();
                     employee.setName(name);
                     employee.setRole(role);
@@ -90,6 +101,7 @@ public class Employee {
         return employees;
     }
 
+//List All the employees in IT team
     public static List<Employee> allTheEmployeesInDevelopmentTeam(String targetName) {
         List<Employee> employees = new ArrayList<Employee>();
         try {
@@ -105,6 +117,7 @@ public class Employee {
         return employees;
         }
 
+//List All the Fresher employees
     public static List<Employee> allTheFresher(String targetName) {
         List<Employee> employees = new ArrayList<Employee>();
         try {
@@ -120,24 +133,18 @@ public class Employee {
         return employees;
     }
 
-
-    public static Double findTheLeastSalary(List<Employee> employees) {
-        //List<Employee> employees = new ArrayList<Employee>();
-
+//Find the employee in development team who's getting the least salary. Not the fresher
+    public static double findTheLeastSalary() {
+        List<Employee> employees = new ArrayList<Employee>();
         double minimum=0;
         try {
-            //int i;
-            Employee employee=new Employee();
             minimum=employees.get(0).getSalary();
 
             for ( int i = 1; i < Employee.allTheEmployeesInDevelopmentTeam("Development").size(); i++) {
                     if (employees.get(i).getSalary() < minimum & !"Fresher".equals(employees.get(i).getRole()) ) {
                         minimum = employees.get(i).getSalary();
-                        //mininmum_name=employees.get(i).getName();
                     }
-
                 }
-
                 }
         catch(Exception e){
             e.printStackTrace();
@@ -145,277 +152,155 @@ public class Employee {
         return minimum;
     }
 
-/*
-//List All the employees in IT team
-    public static void allTheEmployeesInITTeam(Employee employee) {
+//List the empoyee who's working with max experience
+    public static List<Employee> maximumExperience() {
+        List<Employee> employees = new ArrayList<Employee>();
         try {
-            int i = 0;
-            File myFile = new File("C:\\Users\\Dell\\Desktop\\Employee.txt");
-            Scanner myScan = new Scanner(myFile);
-            List<Employee> employees = new ArrayList<Employee>();
-            System.out.println("List All the employees in IT team");
-            System.out.println("------------------------------------------------------------------------------------------------------------------------");
-            System.out.printf("%20s %30s %20s %20s %20s", "NAME", "ROLE", "SUPPORT", "SALARY", "EXPERIENCE");
-            System.out.println();
-            System.out.println("------------------------------------------------------------------------------------------------------------------------");
-            while (myScan.hasNext()) {
-                String line = myScan.nextLine();
-                Scanner scanner = new Scanner(line);
-                scanner.useDelimiter(", ");
-                while (scanner.hasNext()) {
-                    String name = scanner.next();
-                    String role = scanner.next();
-                    String support = scanner.next();
-                    Long salary = scanner.nextLong();
-                    String experience = scanner.next();
-                    //System.out.println("name"+name);
-                    //System.out.println("role"+role);
-                    Employee employee1 = new Employee();
-                    employee.setName(name);
-                    employee.setRole(role);
-                    employee.setSupport(support);
-                    employee.setSalary(salary);
-                    employee.setExperience(experience);
-                    employees.add(employee);
-                    String targetName = "IT";
-                    Employee result = null;
-                    for (Employee employee2 : employees) {
-                        if (targetName.equals(employee2.getSupport())) {
-                            String selectedName = employees.get(i).getName();
-                            String selectedRole = employees.get(i).getRole();
-                            String selectedSupport = employees.get(i).getSupport();
-                            //Long selectedSalary = employees.get(i).getSalary();
-                            String selectedExperience = employees.get(i).getExperience();
-                            System.out.format("%20s %30s %20s %20s %20s", selectedName, selectedRole, selectedSupport, selectedSalary, selectedExperience);
-                            System.out.println();
-                            break;
-                        }
+            int i=0;
+            for (Employee employee2 : Employee.allTheEmployees()) {
+                int maximum=Employee.allTheEmployees().get(0).getExperience();
+                for( i = 1; i < Employee.allTheEmployees().size(); i++) {
+                    if (Employee.allTheEmployees().get(i).getExperience() > maximum) {
+                        maximum = Employee.allTheEmployees().get(i).getExperience();
                     }
-                    i++;
+                }
+                if (maximum==employee2.getExperience()) {
+                    employees.add(employee2);
+                    //System.out.println(Employee.allTheEmployees().get(i).getExperience());
                 }
             }
-            System.out.println("------------------------------------------------------------------------------------------------------------------------");
-            System.out.println();
         }
-        catch (Exception e){
-
+        catch(Exception e){
+            e.printStackTrace();
         }
+        return employees;
     }
 
- //List All the employees in HR team
-    public static void allTheEmployeesInHRTeam(Employee employee) {
+//List the empoyee who's working with less experience
+    public static List<Employee> lessExperience() {
+        List<Employee> employees = new ArrayList<Employee>();
         try {
-            int i = 0;
-            File myFile = new File("C:\\Users\\Dell\\Desktop\\Employee.txt");
-            Scanner myScan = new Scanner(myFile);
-            List<Employee> employees = new ArrayList<Employee>();
-            System.out.println("List All the employees in HR team");
-            System.out.println("------------------------------------------------------------------------------------------------------------------------");
-            System.out.printf("%20s %30s %20s %20s %20s", "NAME", "ROLE", "SUPPORT", "SALARY", "EXPERIENCE");
-            System.out.println();
-            System.out.println("------------------------------------------------------------------------------------------------------------------------");
-            while (myScan.hasNext()) {
-                String line = myScan.nextLine();
-                Scanner scanner = new Scanner(line);
-                scanner.useDelimiter(", ");
-                while (scanner.hasNext()) {
-                    String name = scanner.next();
-                    String role = scanner.next();
-                    String support = scanner.next();
-                    Long salary = scanner.nextLong();
-                    String experience = scanner.next();
-                    //System.out.println("name"+name);
-                    //System.out.println("role"+role);
-                    Employee employee1 = new Employee();
-                    employee.setName(name);
-                    employee.setRole(role);
-                    employee.setSupport(support);
-                    employee.setSalary(salary);
-                    employee.setExperience(experience);
-                    employees.add(employee);
-                    String targetName = "HR";
-                    Employee result = null;
-                    for (Employee employee2 : employees) {
-                        if (targetName.equals(employee2.getSupport())) {
-                            String selectedName = employees.get(i).getName();
-                            String selectedRole = employees.get(i).getRole();
-                            String selectedSupport = employees.get(i).getSupport();
-                            //Long selectedSalary = employees.get(i).getSalary();
-                            String selectedExperience = employees.get(i).getExperience();
-                            System.out.format("%20s %30s %20s %20s %20s", selectedName, selectedRole, selectedSupport, selectedSalary, selectedExperience);
-                            System.out.println();
-                            break;
-                        }
+            int i=1;
+            for (Employee employee2 : Employee.allTheEmployees()) {
+                int minimum=employees.get(0).getExperience();
+                for( i = 1; i < Employee.allTheEmployees().size(); i++) {
+                    if (employees.get(i).getExperience() < minimum) {
+                        minimum = employees.get(i).getExperience();
                     }
-                    i++;
+                }
+                if (minimum==employee2.getExperience()) {
+                    employees.add(employee2);
+                    System.out.println(employees.get(i).getExperience());
                 }
             }
-            System.out.println("------------------------------------------------------------------------------------------------------------------------");
-            System.out.println();
         }
-        catch (Exception e){
-
+        catch(Exception e){
+            e.printStackTrace();
         }
+        return employees;
     }
 
-//List All the Fresher employees
-    public static void allTheFresher(Employee employee) {
+//Find the employee who's getting the min salary
+    public static String findMinimumSalary() {
+        List<Employee> employees = new ArrayList<Employee>();
+        double minimum=0;
+        String minimum_name=null;
+        int i=0;
         try {
-            int i = 0;
-            File myFile = new File("C:\\Users\\Dell\\Desktop\\Employee.txt");
-            Scanner myScan = new Scanner(myFile);
-            List<Employee> employees = new ArrayList<Employee>();
-            System.out.println("//List All the Fresher employees");
-            System.out.println("------------------------------------------------------------------------------------------------------------------------");
-            System.out.printf("%20s %30s %20s %20s %20s", "NAME", "ROLE", "SUPPORT", "SALARY", "EXPERIENCE");
-            System.out.println();
-            System.out.println("------------------------------------------------------------------------------------------------------------------------");
-            while (myScan.hasNext()) {
-                String line = myScan.nextLine();
-                Scanner scanner = new Scanner(line);
-                scanner.useDelimiter(", ");
-                while (scanner.hasNext()) {
-                    String name = scanner.next();
-                    String role = scanner.next();
-                    String support = scanner.next();
-                    Long salary = scanner.nextLong();
-                    String experience = scanner.next();
-                    //System.out.println("name"+name);
-                    //System.out.println("role"+role);
-                    Employee employee1 = new Employee();
-                    employee.setName(name);
-                    employee.setRole(role);
-                    employee.setSupport(support);
-                    employee.setSalary(salary);
-                    employee.setExperience(experience);
-                    employees.add(employee);
-                    String targetName = "Fresher";
-                    Employee result = null;
-                    for (Employee employee2 : employees) {
-                        if (targetName.equals(employee2.getRole())) {
-                            String selectedName = employees.get(i).getName();
-                            String selectedRole = employees.get(i).getRole();
-                            String selectedSupport = employees.get(i).getSupport();
-                            //Long selectedSalary = employees.get(i).getSalary();
-                            String selectedExperience = employees.get(i).getExperience();
-                            System.out.format("%20s %30s %20s %20s %20s", selectedName, selectedRole, selectedSupport, selectedSalary, selectedExperience);
-                            System.out.println();
-                            break;
-                        }
-                    }
-                    i++;
+            //Employee employee=new Employee();
+            minimum=Employee.allTheEmployees().get(0).getSalary();
+            for (  i=0; i < Employee.allTheEmployees().size(); i++) {
+                if (Employee.allTheEmployees().get(i).getSalary() < minimum) {
+                    minimum = Employee.allTheEmployees().get(i).getSalary();
                 }
             }
-            System.out.println("------------------------------------------------------------------------------------------------------------------------");
-            System.out.println();
+            System.out.println(minimum);
+            minimum_name= Employee.allTheEmployees().get(i).getName();
+            System.out.println(minimum_name);
         }
-        catch (Exception e){
-
+        catch(Exception e){
+            e.printStackTrace();
         }
+        return minimum_name;
     }
 
-//Find the employee in development team who's getting the least salary. Not the fresher
-    public static void findTheLeastSalary(Employee employee) {
+//Find the employee who's getting the max salary
+    public static Double findMaximumSalary() {
+        List<Employee> employees = new ArrayList<Employee>();
+        double maximum=0;
         try {
-            int i = 0;
-            File myFile = new File("C:\\Users\\Dell\\Desktop\\Employee.txt");
-            Scanner myScan = new Scanner(myFile);
-            List<Employee> employees = new ArrayList<Employee>();
-            System.out.println("//Find the employee in development team who's getting the least salary. Not the fresher");
-            System.out.println("------------------------------------------------------------------------------------------------------------------------");
-            System.out.printf("%20s %30s %20s %20s %20s", "NAME", "ROLE", "SUPPORT", "SALARY", "EXPERIENCE");
-            System.out.println();
-            System.out.println("------------------------------------------------------------------------------------------------------------------------");
-            while (myScan.hasNext()) {
-                String line = myScan.nextLine();
-                Scanner scanner = new Scanner(line);
-                scanner.useDelimiter(", ");
-                while (scanner.hasNext()) {
-                    String name = scanner.next();
-                    String role = scanner.next();
-                    String support = scanner.next();
-                    Long salary = scanner.nextLong();
-                    String experience = scanner.next();
-                    //System.out.println("name"+name);
-                    //System.out.println("role"+role);
-                    Employee employee1 = new Employee();
-                    employee.setName(name);
-                    employee.setRole(role);
-                    employee.setSupport(support);
-                    employee.setSalary(salary);
-                    employee.setExperience(experience);
-                    employees.add(employee);
-                    String selectedName = employees.get(i).getName();
-                    String selectedRole = employees.get(i).getRole();
-                    String selectedSupport = employees.get(i).getSupport();
-                    //Long selectedSalary = employees.get(i).getSalary();
-                    String selectedExperience = employees.get(i).getExperience();
-                    String targetName = "Development";
-                    Employee result = null;
-                    for (Employee employee2 : employees) {
-                       // long minimum =employees.get(1).getSalary();
-                        for (i = 0; i < employees.size(); i++)
-                             if(selectedSalary < minimum) {
-                                 minimum = selectedSalary;
-                             }
-                            System.out.println(minimum);
-
-                            /*for (int i = 0; i < arr.length; i++) {
-                                //Compare elements of array with min
-                                if(arr[i] <min)
-                                    min = arr[i];
-                            }
-                    }
-                    i++;
+            Employee employee=new Employee();
+            maximum=employees.get(0).getSalary();
+            for ( int i = 1; i < Employee.allTheEmployees().size(); i++) {
+                if (employees.get(i).getSalary() > maximum ) {
+                    maximum = employees.get(i).getSalary();
                 }
-
             }
-
-
-
-            System.out.println("------------------------------------------------------------------------------------------------------------------------");
-            System.out.println();
-
         }
-        catch (Exception e){
-
+        catch(Exception e){
+            e.printStackTrace();
         }
+        return maximum;
     }
 
-*/
+//Find the employees who are all getting the salary greater than 100000
+    public static Double getSalaryGreaterThanOneLakhs() {
+        List<Employee> employees = new ArrayList<Employee>();
+        double maximum=0;
+        try {
+            Employee employee=new Employee();
+            for ( int i = 0; i < Employee.allTheEmployees().size(); i++) {
+                maximum=100000;
+                if (employees.get(i).getSalary() > maximum ) {
+                    maximum = employees.get(i).getSalary();
+                    System.out.println(maximum);
+                }
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return maximum;
+    }
+
+//Find the total salary the company spent
+    public static Double totalSalary() {
+        List<Employee> employees = new ArrayList<Employee>();
+        double sum=0;
+        try {
+            Employee employee=new Employee();
+            for(int i=0;i<Employee.allTheEmployees().size();i++){
+                sum += employees.get(i).getSalary();
+            }
+            System.out.println(sum);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return sum;
+    }
+
+//Find the average the average of the total employee experience
+    public static Double averageExperience() {
+        List<Employee> employees = new ArrayList<Employee>();
+        double average=0;
+        double sum=0;
+        try {
+            Employee employee=new Employee();
+            for(int i=0;i<Employee.allTheEmployees().size();i++){
+                sum += employees.get(i).getExperience();
+            }
+             average = (sum / Employee.allTheEmployees().size());
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return average;
+    }
+
     public static void main(String[] args) throws Exception{
 
-       /* System.out.println("List All the employees");
-        System.out.println("------------------------------------------------------------------------------------------------------------------------");
-        System.out.printf("%20s %30s %20s %20s %20s", "NAME", "ROLE", "SUPPORT", "SALARY", "EXPERIENCE");
-        System.out.println();
-        System.out.println("------------------------------------------------------------------------------------------------------------------------");*/
-
-       //Employee employee=new Employee();
-       //List<Employee> employees=new ArrayList<>();
-       //System.out.println(Employee.allTheEmployeesInDevelopmentTeam("Development"));
-        System.out.println(Employee.findTheLeastSalary(Employee.allTheEmployeesInDevelopmentTeam("Development")));
-
-
-
-
-        //List<Employee> employees=Employee.allTheEmployees(employee);
-
-       //List All the employees in Development team
-        //Employee.allTheEmployeesInDevelopmentTeam(employees);
-
-     /*   //List All the employees in IT team
-        Employee.allTheEmployeesInITTeam(employee);
-
-        //List All the employees in HR team
-        Employee.allTheEmployeesInHRTeam(employee);
-
-        //List All the Fresher employees
-        Employee.allTheFresher(employee);
-
-        //Find the employee in development team who's getting the least salary. Not the fresher
-        Employee.findTheLeastSalary(employee); */
-
+        Employee.findMinimumSalary();
 
 
         }
