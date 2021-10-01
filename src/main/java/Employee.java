@@ -207,16 +207,13 @@ public class Employee {
         String minimum_name=null;
         int i=0;
         try {
-            //Employee employee=new Employee();
             minimum=Employee.allTheEmployees().get(0).getSalary();
             for (  i=0; i < Employee.allTheEmployees().size(); i++) {
                 if (Employee.allTheEmployees().get(i).getSalary() < minimum) {
                     minimum = Employee.allTheEmployees().get(i).getSalary();
+                    minimum_name= Employee.allTheEmployees().get(i).getName();
                 }
             }
-            System.out.println(minimum);
-            minimum_name= Employee.allTheEmployees().get(i).getName();
-            System.out.println(minimum_name);
         }
         catch(Exception e){
             e.printStackTrace();
@@ -225,22 +222,26 @@ public class Employee {
     }
 
 //Find the employee who's getting the max salary
-    public static Double findMaximumSalary() {
+    public static String findMaximumSalary() {
         List<Employee> employees = new ArrayList<Employee>();
         double maximum=0;
+        String maximumName=null;
+        int i;
         try {
-            Employee employee=new Employee();
-            maximum=employees.get(0).getSalary();
-            for ( int i = 1; i < Employee.allTheEmployees().size(); i++) {
-                if (employees.get(i).getSalary() > maximum ) {
-                    maximum = employees.get(i).getSalary();
+            maximum=Employee.allTheEmployees().get(0).getSalary();
+            for ( i = 0; i < Employee.allTheEmployees().size(); i++) {
+                if (Employee.allTheEmployees().get(i).getSalary() > maximum ) {
+                    maximumName= Employee.allTheEmployees().get(i).getName();
+                    maximum = Employee.allTheEmployees().get(i).getSalary();
                 }
             }
+            System.out.println(maximum);
+            System.out.println(maximumName);
         }
         catch(Exception e){
             e.printStackTrace();
         }
-        return maximum;
+        return maximumName;
     }
 
 //Find the employees who are all getting the salary greater than 100000
@@ -300,7 +301,7 @@ public class Employee {
 
     public static void main(String[] args) throws Exception{
 
-        Employee.findMinimumSalary();
+        Employee.findMaximumSalary();
 
 
         }
