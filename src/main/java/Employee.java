@@ -11,7 +11,7 @@ import java.nio.file.Paths;
 import java.nio.file.Files;
 import java.nio.charset.StandardCharsets;
 
-public class Employee {
+public class Employee  {
 
     String name;
     String role;
@@ -342,6 +342,61 @@ public class Employee {
         }
         return average;
     }
+//Comparable
+public static Comparable<Employee> getEmployeeByExperience() {
+    // override the compare() method
+    Employee employee=new Employee();
+    Comparable comp=new Comparable() {
+        @Override
+        public int compareTo(Object o) {
+            return 0;
+        }
+    }
+        public int compareTo(Employee e) {
+            return employee.getExperience() - e.getExperience();
+        }
+
+}
+    public static List<Employee> comparable(){
+        List<Employee> employees = new ArrayList<>();
+        List<Employee> employees1 = new ArrayList<Employee>();
+        for(Employee employee:Employee.allTheEmployees()){
+            employees.add(employee);
+        }
+        Collections.sort(Employee.allTheEmployees());
+        for (Employee employee1 : employees) {
+            employees1.add(employee1);
+        }
+        return employees1;
+    }
+
+
+//Comparator
+public static Comparator<Employee> getEmployeeByName(){
+    // override the compare() method
+    Comparator comp = new Comparator <Employee>() {
+        public int compare(Employee e1, Employee e2) {
+            return e1.name.compareTo(e2.name);
+        }
+    };
+    return comp;
+}
+public static List<Employee> comparator(){
+    List<Employee> employees = new ArrayList<Employee>();
+    List<Employee> employees1 = new ArrayList<Employee>();
+    for(Employee employee:Employee.allTheEmployees()){
+        employees.add(employee);
+    }
+        Collections.sort(employees, Employee.getEmployeeByName());
+        for (Employee employee1 : employees) {
+            employees1.add(employee1);
+        }
+    return employees1;
+}
+
+
+
+
 
     public static void main(String[] args){
 
@@ -471,6 +526,33 @@ public class Employee {
            String averageInString=Double.toString(average);
            writer.newLine();
            writer.write(averageInString);
+
+            writer.newLine();
+            List<Employee> sortedListUsingComparator = Employee.comparator();
+            writer.write("sorted list using comparator");
+            writer.newLine();
+            for(int i=0;i< sortedListUsingComparator.size();i++) {
+                //String list={sortedListUsingComparator.get(i).getName(), sortedListUsingComparator.get(i).getRole(),sortedListUsingComparator.get(i).getSupport(),sortedListUsingComparator.get(i).getSalary(), sortedListUsingComparator.get(i).getExperience()};
+                //String getSalaryString=Double.toString();
+                //String getExperienceString=Double.toString();
+                //writer.write(list);
+                writer.write(sortedListUsingComparator.get(i).getName()+sortedListUsingComparator.get(i).getRole()+sortedListUsingComparator.get(i).getSupport()+sortedListUsingComparator.get(i).getSalary()+sortedListUsingComparator.get(i).getExperience());
+                writer.newLine();
+            }
+
+            writer.newLine();
+            List<Employee> sortedListUsingComparable = Employee.comparable();
+            writer.write("sorted list using comparable");
+            writer.newLine();
+            for(int i=0;i< sortedListUsingComparable.size();i++) {
+                //String list={sortedListUsingComparator.get(i).getName(), sortedListUsingComparator.get(i).getRole(),sortedListUsingComparator.get(i).getSupport(),sortedListUsingComparator.get(i).getSalary(), sortedListUsingComparator.get(i).getExperience()};
+                //String getSalaryString=Double.toString();
+                //String getExperienceString=Double.toString();
+                //writer.write(list);
+                writer.write(sortedListUsingComparable.get(i).getName()+sortedListUsingComparable.get(i).getRole()+sortedListUsingComparable.get(i).getSupport()+sortedListUsingComparable.get(i).getSalary()+sortedListUsingComparable.get(i).getExperience());
+                writer.newLine();
+            }
+
            writer.close();
         }
         catch(IOException e){
